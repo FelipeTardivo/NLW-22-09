@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none; /*tirar os pontinhos da lista*/
+}
+
+
+
+body {
+
+    background-image: url(./assets/bg.jpg);
+    background-position: top center; 
+    background-size: 100% auto; /*O primeiro vai ser o tamanho horizontal de 100% da página para que o bg.jpg preencha e o segundo automático*/
+    background-repeat: no-repeat;
+    background-color: #121214;
+
+}
+
+
+body * {
+    font-family: 'Inter', sans-serif;
+    line-height: 160%;
+
+}
+
+header {
+    padding-top: 32px;
+    height: calc(120px + 32px); /*quando se tem preguiça de colocar 152px direto e pede para o CSS calcular kkk*/
+    /* text-align: center; Se o header não alinhar é pq o carinha que estamos tentando alinha não tem propriedade de texto (p. ex. divs). Ele alinhou depois com o proprio flex*/
+}
+
+header div {
+    width: 120px;
+    margin: auto;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    border-radius: 50%;
+    display: flex;
+    padding: 4px;
+    transition: transform .3s; /*edita o transition abaixo para fazer o efeito em 0.3 segundos*/
+
+}
+
+
+header div:hover { /*propriedade para fazer algo quando passar o mouse */
+    transform: scale(1.1);
+
+
+}
+
+
+header div img {
+    width: 100%; /*esse 100% é em relação a div do header*/
+    border-radius: 50%;
+    
+}
+
+/* 
+main * {
+    border: 1px solid orange; //coloca borda para facilitar a visualização
+} */
+
+main {
+    max-width: 580px;
+    width: 90%;
+    margin: 32px auto; /*no margin quando tem 2 valores, o primeiro é relacionado ao de cima e o segundo ao de baixo*/
+
+    display: grid; /*explica novamente o display em 53:28*/
+    gap: 24px;
+    margin-top: 32px;
+
+}
+
+section {
+
+    color: white;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    padding-top: 4px;
+    border-radius: 10px;
+
+
+}
+
+section div {
+    background-color: #2A2634;
+    padding: 32px;
+    padding-top: 24px;
+    border-radius: 8px;
+}
+
+section h2 {
+letter-spacing: -0.47px;
+}
+
+section p {
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+section ul {
+    display: flex; /*no video 3/6 aos 42:35 ele explica muito bem o que é display in line block e flex*/
+    flex-wrap: wrap;/*quando tem muitas caixas de jogos, ele joga para baixo ao invés de ficar jogando para a direita*/
+    gap: 16px;
+    margin-top: 24px;
+}
+
+section ul li {
+    transition: transform .3s;
+
+}
+
+section ul li:hover {
+    transform: scale(1.1)
+
+}
+
+
+.games-list img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+.channel-list img {
+    border-radius: 50%; /*dica para arredondar certinho a borda e ficar redondo*/
+    width: 70px;
+    border: 1px solid #443E54;
+}
+
+/* Animation */
+
+header div {
+    animation: fromTop .7s .2s backwards; /*o primeiro tempo é da animação e o segundo é o delay para iniciar. O backwards puxa as animações abaixo para começarem antes de tudo.*/
+}
+
+main section {
+    animation: fromBottom .7s backwards;
+}
+
+main section:nth-child(1) { /*O CSS consegue pegar os filhos do main (nesse caso são os 3 sections) - nth é a numeração (first, second, third, fourth...) e child é o filho*/
+    animation-delay: 0;
+}
+
+main section:nth-child(2) {
+    animation-delay: .3s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .6s;
+}
+
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fromBottom {
+    from {
+        opacity: 0;
+        transform: translateX(-30px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
